@@ -8,7 +8,7 @@ _Meta = ((1000, 'M'),
 def romanize(number):
     def next(result, remain, radix, symbol):
         while remain >= radix:
-            remain, result = (remain - radix, result + symbol)
+            result, remain = (result + symbol, remain - radix)
         return result, remain
 
     r, _ = reduce(lambda r, m:next(*(r+m)), _Meta, ('', number))
